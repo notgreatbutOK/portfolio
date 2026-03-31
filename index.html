@@ -8,27 +8,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"/>
 
 <style>
-body { background:#050505; font-family: Inter, sans-serif; }
+body { background:#050505; font-family: Inter, sans-serif; color: #fff; }
+body.light { background:#f5f5f5; color: #000; }
 
 .grid-overlay{position:fixed;inset:0;background-image:
 linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
 linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
 background-size:90px 90px;pointer-events:none}
+body.light .grid-overlay{background-image:
+linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)}
 
 .cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;
 background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
 pointer-events:none;transform:translate(-50%,-50%);z-index:0}
+body.light .cursor-glow{background:radial-gradient(circle, rgba(0,0,0,0.03), transparent 60%)}
 
 .section-line{border-top:1px solid rgba(255,255,255,0.08)}
+body.light .section-line{border-top:1px solid rgba(0,0,0,0.1)}
+
 .pill{border:1px solid rgba(255,255,255,0.15);padding:4px 10px;border-radius:999px;font-size:11px;color:#aaa;transition:.2s}
 .pill:hover{color:white;border-color:white}
+body.light .pill{border:1px solid rgba(0,0,0,0.15);color:#666}
+body.light .pill:hover{color:#000;border-color:#000}
+
 .card{border:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.4);backdrop-filter:blur(12px)}
+body.light .card{border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.6)}
 
 .dropdown{display:none;position:absolute;top:30px;right:0;background:#0b0b0b;border:1px solid rgba(255,255,255,0.1);padding:10px;border-radius:10px}
+body.light .dropdown{background:#f0f0f0;border:1px solid rgba(0,0,0,0.1)}
 .nav-more:hover .dropdown{display:block}
 
 #cmdk{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:50;align-items:center;justify-content:center}
+body.light #cmdk{background:rgba(0,0,0,0.3)}
 #cmdkBox{background:#0b0b0b;border:1px solid rgba(255,255,255,0.1);padding:20px;border-radius:12px;width:400px}
+body.light #cmdkBox{background:#fff;border:1px solid rgba(0,0,0,0.1)}
 
 .dp-avatar {
   width: 64px; height: 64px;
@@ -38,7 +52,15 @@ pointer-events:none;transform:translate(-50%,-50%);z-index:0}
   transition: transform 0.3s, border-color 0.3s;
   background: #111;
 }
+body.light .dp-avatar{background: #f0f0f0;border: 1px solid rgba(0,0,0,0.1)}
 .dp-avatar:hover { transform: scale(1.1); border-color: white; }
+body.light .dp-avatar:hover { border-color: #000; }
+
+nav{border-color:rgba(255,255,255,0.1)!important;background:rgba(0,0,0,0.3)!important}
+body.light nav{border-color:rgba(0,0,0,0.1)!important;background:rgba(255,255,255,0.3)!important}
+
+body.light input{background:#fff!important;color:#000!important;border-color:rgba(0,0,0,0.1)!important}
+body.light input::placeholder{color:#999}
 </style>
 </head>
 
@@ -98,7 +120,7 @@ pointer-events:none;transform:translate(-50%,-50%);z-index:0}
   <div class="section-line mt-6 pt-4">
     <h2 class="text-xs text-gray-500 mb-2">About</h2>
     <p class="text-xs text-gray-300 leading-relaxed">
-      Builder who shipped a full-stack SaaS product end-to-end during my internship. I work across the stack — Node.js, Express, MongoDB, and vanilla frontend. Looking to join a team where I can learn fast and contribute to real engineering problems.
+      Final-year Computer Science student with hands-on internship experience in Web Development at Sunver Coresynergy Solutions. Built and delivered a full-stack SaaS product end-to-end. Seeking opportunities to apply backend and web development skills, learn from industry professionals, and contribute to real-world engineering challenges.
     </p>
   </div>
 
@@ -158,22 +180,10 @@ pointer-events:none;transform:translate(-50%,-50%);z-index:0}
 
   <!-- PROJECTS -->
   <div class="section-line mt-6 pt-4" id="projects">
-    <h2 class="text-xs text-gray-500 mb-3">Projects</h2>
-    <div class="card rounded-xl p-4 hover:bg-white/5 transition cursor-pointer">
-      <div class="flex items-start justify-between">
-        <div>
-          <p class="text-xs text-white font-medium">Kirana Store SaaS</p>
-          <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">Full-stack SaaS for kirana store operations — inventory, billing, store data. Owned end-to-end from schema design to deployment.</p>
-          <div class="flex flex-wrap gap-1.5 mt-2">
-            <span class="pill text-[10px]">Node.js</span>
-            <span class="pill text-[10px]">Express</span>
-            <span class="pill text-[10px]">MongoDB</span>
-            <span class="pill text-[10px]">JS</span>
-          </div>
-        </div>
-        <a href="https://github.com/notgreatbutOK" target="_blank" class="text-[10px] text-gray-600 hover:text-white ml-4 shrink-0">↗</a>
-      </div>
-    </div>
+    <a href="https://github.com/notgreatbutOK" target="_blank" class="block group">
+      <h2 class="text-xs text-gray-500 mb-3 group-hover:text-white transition cursor-pointer">Projects ↗</h2>
+      <p class="text-xs text-gray-400 group-hover:text-gray-300 transition">View all projects on GitHub</p>
+    </a>
   </div>
 
   <!-- EDUCATION -->
@@ -205,32 +215,9 @@ pointer-events:none;transform:translate(-50%,-50%);z-index:0}
 </div>
 
 <!-- DEV QUOTE -->
-<div class="mt-8 border-t border-white/10 pt-4 text-center">
-  const fallbackQuotes = [
-  { quote: "First, solve the problem. Then, write the code.", author: "John Johnson" },
-  { quote: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House" },
-  { quote: "Make it work, make it right, make it fast.", author: "Kent Beck" },
-  { quote: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
-  { quote: "The best error message is the one that never shows up.", author: "Thomas Fuchs" },
-  { quote: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
-  { quote: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
-  { quote: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
-];
-
-let lastIndex = -1;
-function loadQuote() {
-  let index;
-  do { index = Math.floor(Math.random() * fallbackQuotes.length); } while (index === lastIndex);
-  lastIndex = index;
-  const q = fallbackQuotes[index];
-  document.getElementById('quote').innerText = `"${q.quote}" — ${q.author}`;
-}
-loadQuote();
-setInterval(loadQuote, 8000);
-document.getElementById('quote').style.cursor = 'pointer';
-document.getElementById('quote').onclick = loadQuote;
-</div>
-
+  <div class="mt-8 border-t border-white/10 pt-4 text-center">
+    <p id="quote" class="text-xs text-gray-400 italic cursor-pointer hover:text-gray-300 transition">Loading quote...</p>
+  </div>
 <div class="mt-6 text-center text-[10px] text-gray-700">
   © 2026 Gurram Harshavardhan · Bangalore
 </div>
@@ -272,18 +259,43 @@ function renderCmdResults(q) {
 
 // Theme toggle
 document.getElementById('themeToggle').onclick = () => {
-  document.body.classList.toggle('invert');
+  document.body.classList.toggle('light');
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
 };
 
+// Load saved theme
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+}
+
 // Dev quote
+const fallbackQuotes = [
+  { quote: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+  { quote: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House" },
+  { quote: "Make it work, make it right, make it fast.", author: "Kent Beck" },
+  { quote: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
+  { quote: "The best error message is the one that never shows up.", author: "Thomas Fuchs" },
+  { quote: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+  { quote: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
+  { quote: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+];
+
+let lastApiIndex = -1;
 function loadQuote() {
   fetch('https://programming-quotesapi.vercel.app/api/random')
     .then(r => r.json())
     .then(d => { document.getElementById('quote').innerText = `"${d.quote}" — ${d.author}`; })
-    .catch(() => { document.getElementById('quote').innerText = '"Code. Break. Fix. Repeat."'; });
+    .catch(() => {
+      let index;
+      do { index = Math.floor(Math.random() * fallbackQuotes.length); } while (index === lastApiIndex);
+      lastApiIndex = index;
+      const q = fallbackQuotes[index];
+      document.getElementById('quote').innerText = `"${q.quote}" — ${q.author}`;
+    });
 }
 loadQuote();
 setInterval(loadQuote, 10000);
+document.getElementById('quote').onclick = loadQuote;
 </script>
 
 </body>
