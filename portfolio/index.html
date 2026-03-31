@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Harshavardhan | Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+body { background:#050505; font-family: Inter, sans-serif; }
+
+.grid-overlay{position:fixed;inset:0;background-image:
+linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+background-size:90px 90px;pointer-events:none}
+
+.cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;
+background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+pointer-events:none;transform:translate(-50%,-50%);z-index:0}
+
+.section-line{border-top:1px solid rgba(255,255,255,0.08)}
+.pill{border:1px solid rgba(255,255,255,0.15);padding:4px 10px;border-radius:999px;font-size:11px;color:#aaa;transition:.2s}
+.pill:hover{color:white;border-color:white}
+.card{border:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.4);backdrop-filter:blur(12px)}
+
+.dropdown{display:none;position:absolute;top:30px;right:0;background:#0b0b0b;border:1px solid rgba(255,255,255,0.1);padding:10px;border-radius:10px}
+.nav-more:hover .dropdown{display:block}
+
+/* CMD K */
+#cmdk{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:50;align-items:center;justify-content:center}
+#cmdkBox{background:#0b0b0b;border:1px solid rgba(255,255,255,0.1);padding:20px;border-radius:12px;width:400px}
+
+</style>
+</head>
+
+<body class="text-white">
+<div class="grid-overlay"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full flex justify-between px-6 py-3 text-xs text-gray-400 border-b border-white/10 backdrop-blur bg-black/30 z-10">
+  <div class="font-bold text-white">DJ</div>
+  <div class="flex gap-6 items-center">
+    <a href="#" class="hover:text-white">Home</a>
+    <a href="#" class="hover:text-white">Projects</a>
+
+    <div class="relative nav-more">
+      <span class="cursor-pointer hover:text-white">More ▾</span>
+      <div class="dropdown text-xs text-gray-400">
+        <p>Blogs</p>
+        <p>Books</p>
+        <p>Favourites</p>
+      </div>
+    </div>
+
+    <div id="cmdBtn" class="border px-2 py-1 rounded text-[10px] cursor-pointer">Ctrl K</div>
+    <button id="themeToggle" class="text-xs">🌙</button>
+  </div>
+</nav>
+
+<!-- CMD K MODAL -->
+<div id="cmdk">
+  <div id="cmdkBox">
+    <input placeholder="Search..." class="w-full bg-black border border-white/10 p-2 text-sm"/>
+    <p class="text-xs text-gray-500 mt-2">Try typing GitHub / Projects</p>
+  </div>
+</div>
+
+<main class="pt-24 max-w-xl mx-auto relative z-10">
+
+<div class="card px-6 py-6">
+
+<div class="flex items-center gap-4">
+<img src="images/dp.jpg" class="w-16 h-16 rounded-lg border border-white/10 object-cover transition duration-300 hover:scale-110 hover:border-white"/>
+<div class="flex-1">
+<h1 class="text-sm font-semibold">Gurram Harshavardhan <span class="text-blue-400">✔</span></h1>
+<p class="text-[11px] text-gray-500">Trying to do better</p>
+<p class="text-[10px] text-gray-600">● idle · learning</p>
+</div>
+<div class="text-[10px] text-gray-500">👁 4,381</div>
+</div>
+
+<div class="section-line mt-6 pt-4">
+<h2 class="text-xs text-gray-500 mb-2">About</h2>
+<p class="text-xs text-gray-300">Builder creating SaaS and backend systems. Learning by doing.</p>
+</div>
+
+<div class="section-line mt-6 pt-4">
+<h2 class="text-xs text-gray-500 mb-2">Connect</h2>
+<div class="flex flex-wrap gap-2">
+<a href="https://github.com/notgreatbutOK" target="_blank" class="pill">GitHub</a>
+<a href="https://www.linkedin.com/in/gurram-harshavardhan2005" target="_blank" class="pill">LinkedIn</a>
+<a href="mailto:gurramharsha2005@gmail.com" class="pill">Email</a>
+</div>
+</div>
+
+<div class="section-line mt-6 pt-4">
+<h2 class="text-xs text-gray-500 mb-3">GitHub Activity</h2>
+<img src="https://ghchart.rshah.org/notgreatbutOK" class="w-full opacity-80"/>
+</div>
+
+<div class="section-line mt-6 pt-4">
+<h2 class="text-xs text-gray-500 mb-2">Experience</h2>
+<p class="text-xs text-gray-300">Web Dev Intern — Sunver</p>
+</div>
+
+<div class="section-line mt-6 pt-4">
+<h2 class="text-xs text-gray-500 mb-2">Education</h2>
+<p class="text-xs text-gray-300">BSc CS — Gopalan college of commerce</p>
+</div>
+
+</div>
+
+<!-- RANDOM DEV QUOTE -->
+<div class="mt-8 border-t border-white/10 pt-4 text-center">
+  <p class="text-[10px] text-gray-600 uppercase tracking-widest mb-3">Dev Thought</p>
+  <div id="quote" class="text-sm text-gray-300 italic max-w-md mx-auto">Loading quote...</div>
+</div>
+
+</main>
+
+<script>
+// cursor glow
+const glow=document.getElementById('glow');
+document.addEventListener('mousemove',e=>{
+  glow.style.left=e.clientX+'px';
+  glow.style.top=e.clientY+'px';
+});
+
+// cmd+k
+const modal=document.getElementById('cmdk');
+document.getElementById('cmdBtn').onclick=()=>modal.style.display='flex';
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey && e.key==='k'){e.preventDefault();modal.style.display='flex';}
+  if(e.key==='Escape') modal.style.display='none';
+});
+
+// theme toggle
+const toggle=document.getElementById('themeToggle');
+toggle.onclick=()=>{
+  document.body.classList.toggle('invert');
+};
+
+// RANDOM DEV QUOTE API
+function loadQuote(){
+  fetch('https://programming-quotesapi.vercel.app/api/random')
+  .then(res=>res.json())
+  .then(data=>{
+    document.getElementById('quote').innerText = `"${data.quote}" — ${data.author}`;
+  })
+  .catch(()=>{
+    document.getElementById('quote').innerText = 'Code. Break. Fix. Repeat.';
+  });
+}
+
+loadQuote();
+setInterval(loadQuote, 10000);
+</script>
+
+</body>
+</html>
