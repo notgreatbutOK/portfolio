@@ -78,8 +78,19 @@ body.light #dpFallback {
   color: #000;
 }
 
-nav{border-color:rgba(255,255,255,0.1)!important;background:rgba(0,0,0,0.3)!important}
-body.light nav{border-color:rgba(0,0,0,0.1)!important;background:rgba(255,255,255,0.3)!important}
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-color:rgba(255,255,255,0.1)!important;
+  background:rgba(0,0,0,0.7)!important;
+  backdrop-filter: blur(10px);
+}
+body.light nav{
+  border-color:rgba(0,0,0,0.1)!important;
+  background:rgba(255,255,255,0.8)!important;
+  backdrop-filter: blur(10px);
+}
 
 body.light input{background:#fff!important;color:#000!important;border-color:rgba(0,0,0,0.1)!important}
 body.light input::placeholder{color:#999}
@@ -149,6 +160,11 @@ body.light .hire-card{
   border-radius: 16px;
   transition: 0.3s ease;
   border: 1px solid #2a2a2a;
+}
+
+.profile-card {
+  position: relative;
+  z-index: 1;
 }
 
 .project .card:hover {
@@ -341,7 +357,7 @@ body.light .card:hover {
 
 <main class="pt-24 max-w-3xl mx-auto relative z-10 px-6 pb-16">
 
-<div class="card rounded-2xl px-6 py-6 md:px-8 md:py-8">
+<div class="card profile-card rounded-2xl px-6 py-6 md:px-8 md:py-8">
 
   <!-- PROFILE -->
   <div class="flex items-center gap-4">
