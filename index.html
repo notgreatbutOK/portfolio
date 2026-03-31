@@ -58,6 +58,25 @@ body.light .dp-avatar{background: #f0f0f0;border: 1px solid rgba(0,0,0,0.1)}
 .dp-avatar:hover { transform: scale(1.1); border-color: white; }
 body.light .dp-avatar:hover { border-color: #000; }
 
+#dpFallback {
+  display: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: #111;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  display: flex;
+  flex-shrink: 0;
+}
+body.light #dpFallback {
+  background: #f0f0f0;
+  border-color: rgba(0,0,0,0.1);
+  color: #000;
+}
+
 nav{border-color:rgba(255,255,255,0.1)!important;background:rgba(0,0,0,0.3)!important}
 body.light nav{border-color:rgba(0,0,0,0.1)!important;background:rgba(255,255,255,0.3)!important}
 
@@ -121,6 +140,35 @@ body.light .hire-card{
   background: #0f0f0f;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
+}
+
+.project .card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 16px;
+  transition: 0.3s ease;
+  border: 1px solid #2a2a2a;
+}
+
+.project .card:hover {
+  transform: translateY(-5px);
+  border-color: #555;
+}
+
+.project .card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.project .card p,
+.project .card ul {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.project .card ul {
+  padding-left: 18px;
 }
 
 .container {
@@ -298,7 +346,7 @@ body.light .card:hover {
   <div class="flex items-center gap-4">
     <img src="images/dp.jpg" class="dp-avatar" alt="Harshavardhan" id="dpImg"
       onerror="this.style.display='none';document.getElementById('dpFallback').style.display='flex'"/>
-    <div id="dpFallback" style="display:none;width:64px;height:64px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:#111;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🧑‍💻</div>
+    <div id="dpFallback">🧑‍💻</div>
     <div class="flex-1">
       <h1 class="text-sm font-semibold">Gurram Harshavardhan <span class="text-blue-400">✔</span></h1>
       <p class="text-[11px] text-gray-500">Final-year CS student · Backend & Web Dev</p>
@@ -480,7 +528,7 @@ body.light .card:hover {
     <p id="quote" class="text-xs text-gray-400 italic cursor-pointer hover:text-gray-300 transition">Loading quote...</p>
   </div>
 <div class="mt-6 text-center text-[10px] text-gray-700">
-  © 2024 Gurram Harshavardhan · Bangalore
+  © <span id="year"></span> Gurram Harshavardhan · Bangalore
 </div>
 
 </main>
@@ -503,7 +551,8 @@ const cmdLinks = [
 
 document.getElementById('cmdBtn').onclick = () => { modal.style.display = 'flex'; renderCmdResults(''); };
 document.addEventListener('keydown', e => {
-  if (e.ctrlKey && e.key === 'k') { e.preventDefault(); modal.style.display = 'flex'; renderCmdResults(''); }
+  const isCmdK = (e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k';
+  if (isCmdK) { e.preventDefault(); modal.style.display = 'flex'; renderCmdResults(''); }
   if (e.key === 'Escape') modal.style.display = 'none';
 });
 modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
@@ -561,8 +610,10 @@ function loadQuote() {
     });
 }
 loadQuote();
-setInterval(loadQuote, 10000);
+setInterval(loadQuote, 30000);
 document.getElementById('quote').onclick = loadQuote;
+
+document.getElementById('year').textContent = new Date().getFullYear();
 
 function toggleKirana() {
   const section = document.getElementById("kirana");
