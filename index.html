@@ -115,6 +115,62 @@ body.light .hire-card{
   color:#666;
 }
 
+.project {
+  padding: 80px 20px;
+  background: #0f0f0f;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.project h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 16px;
+  transition: 0.3s ease;
+  border: 1px solid #2a2a2a;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #555;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.card p,
+.card ul {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card ul {
+  padding-left: 18px;
+}
 .hire-card:hover{
   transform:translateY(-2px);
   background:rgba(255,255,255,0.1);
@@ -293,6 +349,68 @@ body.light .hire-card:hover{
 </div>
 
 </main>
+
+<section class="project">
+  <div class="container">
+    
+    <h2>Kirana SaaS</h2>
+    <p class="tagline">Digital identity for local stores — powered by WhatsApp</p>
+
+    <div class="grid">
+      
+      <div class="card">
+        <h3>🚩 Problem</h3>
+        <p>
+          Local kirana stores struggle to go online. Most owners lack technical knowledge,
+          rely on offline sales, and miss digital opportunities.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>💡 Solution</h3>
+        <p>
+          Built a simple SaaS platform that brings stores online instantly using WhatsApp —
+          no coding, no setup, no complexity.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⚙️ Features</h3>
+        <ul>
+          <li>WhatsApp ordering system</li>
+          <li>Digital product catalog</li>
+          <li>Shareable shop link</li>
+          <li>Repeat order flow</li>
+          <li>Broadcast offers</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🎯 Insight</h3>
+        <p>
+          The real problem wasn’t automation — it was lack of online presence.
+          Simplicity > complexity.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 Value</h3>
+        <p>
+          Helps stores go online in minutes using familiar tools like WhatsApp,
+          improving convenience and saving time.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🧠 Learnings</h3>
+        <p>
+          Online presence alone isn’t enough — discovery and visibility are the next challenges.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <script>
 // Cursor glow
