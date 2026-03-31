@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Portfolio of Gurram Harshavardhan - Final-year Computer Science student specializing in backend and web development. Experience with Node.js, Express, MongoDB."/>
 <title>Harshavardhan | Portfolio</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"/>
@@ -61,6 +62,70 @@ body.light nav{border-color:rgba(0,0,0,0.1)!important;background:rgba(255,255,25
 
 body.light input{background:#fff!important;color:#000!important;border-color:rgba(0,0,0,0.1)!important}
 body.light input::placeholder{color:#999}
+
+.why-me{list-style:none;padding:0;margin:0}
+.why-me li{transition:.2s;padding-left:0}
+.why-me li:hover{background:rgba(255,255,255,0.05);border-radius:4px;padding-left:4px}
+body.light .why-me li:hover{background:rgba(0,0,0,0.05)}
+
+.why-hire-dropdown{
+  display:none;
+  position:fixed;
+  top:50px;
+  right:24px;
+  width:min(320px, 90vw);
+  background:rgba(11,11,11,0.9);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1);
+  z-index:1000;
+  transition:box-shadow 0.3s ease;
+}
+body.light .why-hire-dropdown{
+  background:rgba(255,255,255,0.9);
+  border:1px solid rgba(0,0,0,0.1);
+  box-shadow:0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05), 0 0 20px rgba(0,0,0,0.1);
+}
+
+.why-hire-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.hire-card{
+  background:rgba(255,255,255,0.05);
+  border-radius:8px;
+  padding:12px 10px;
+  min-height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform 0.2s ease, background 0.2s ease, filter 0.2s ease;
+  cursor:pointer;
+  font-size:10px;
+  color:#ccc;
+  font-weight:500;
+  text-align:center;
+}
+body.light .hire-card{
+  background:rgba(0,0,0,0.05);
+  color:#666;
+}
+
+.hire-card:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.1);
+  filter:brightness(1.1);
+}
+body.light .hire-card:hover{
+  background:rgba(0,0,0,0.1);
+  filter:brightness(0.9);
+}
+
+.nav-more:hover .why-hire-dropdown{display:block}
 </style>
 </head>
 
@@ -70,16 +135,21 @@ body.light input::placeholder{color:#999}
 
 <!-- NAV -->
 <nav class="fixed top-0 w-full flex justify-between px-6 py-3 text-xs text-gray-400 border-b border-white/10 backdrop-blur bg-black/30 z-10">
-  <div class="font-bold text-white">GHB</div>
+  <div class="font-bold text-white">GHV</div>
   <div class="flex gap-6 items-center">
     <a href="#" class="hover:text-white">Home</a>
     <a href="#projects" class="hover:text-white">Projects</a>
     <div class="relative nav-more">
-      <span class="cursor-pointer hover:text-white">More ▾</span>
-      <div class="dropdown text-xs text-gray-400 z-50">
-        <p class="hover:text-white cursor-pointer py-1">Skills</p>
-        <p class="hover:text-white cursor-pointer py-1">Education</p>
-        <p class="hover:text-white cursor-pointer py-1">Experience</p>
+      <span class="cursor-pointer hover:text-white">Why Hire Me ▾</span>
+      <div class="why-hire-dropdown">
+        <h2 class="text-xs text-white font-medium mb-3 text-center">Why Hire Me</h2>
+        <div class="why-hire-grid">
+          <div class="hire-card">Fast learner</div>
+          <div class="hire-card">Build real-world projects</div>
+          <div class="hire-card">Consistent growth</div>
+          <div class="hire-card">Problem solver</div>
+          <div class="hire-card">Self-driven</div>
+        </div>
       </div>
     </div>
     <div id="cmdBtn" class="border border-white/20 px-2 py-1 rounded text-[10px] cursor-pointer hover:border-white/50">⌘ K</div>
@@ -138,7 +208,7 @@ body.light input::placeholder{color:#999}
   <!-- GITHUB ACTIVITY -->
   <div class="section-line mt-6 pt-4">
     <h2 class="text-xs text-gray-500 mb-3">GitHub Activity</h2>
-    <img src="https://ghchart.rshah.org/notgreatbutOK" class="w-full opacity-80 rounded" alt="GitHub chart"/>
+    <img src="https://ghchart.rshah.org/notgreatbutOK" class="w-full opacity-80 rounded" alt="GitHub contribution graph for notgreatbutOK showing activity over the past year"/>
   </div>
 
   <!-- SKILLS -->
@@ -172,8 +242,8 @@ body.light input::placeholder{color:#999}
         </ul>
       </div>
       <div class="text-[10px] text-gray-600 text-right shrink-0 ml-4">
-        <div>Feb 2026</div>
-        <div>— Mar 2026</div>
+        <div>Feb 2024</div>
+        <div>— Mar 2024</div>
       </div>
     </div>
   </div>
@@ -219,7 +289,7 @@ body.light input::placeholder{color:#999}
     <p id="quote" class="text-xs text-gray-400 italic cursor-pointer hover:text-gray-300 transition">Loading quote...</p>
   </div>
 <div class="mt-6 text-center text-[10px] text-gray-700">
-  © 2026 Gurram Harshavardhan · Bangalore
+  © 2024 Gurram Harshavardhan · Bangalore
 </div>
 
 </main>
@@ -258,15 +328,21 @@ function renderCmdResults(q) {
 }
 
 // Theme toggle
-document.getElementById('themeToggle').onclick = () => {
+const themeBtn = document.getElementById('themeToggle');
+function updateThemeIcon() {
+  themeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+}
+themeBtn.onclick = () => {
   document.body.classList.toggle('light');
   localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  updateThemeIcon();
 };
 
 // Load saved theme
 if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light');
 }
+updateThemeIcon();
 
 // Dev quote
 const fallbackQuotes = [
