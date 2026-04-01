@@ -3,82 +3,24 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Portfolio of Gurram Harshavardhan - Final-year Computer Science student specializing in backend and web development."/>
 <title>Harshavardhan | Portfolio</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+
 <style>
 html { scroll-behavior: smooth; }
 body { background:#050505; font-family: Inter, sans-serif; color: #fff; overflow-x: hidden; }
 
-/* ── DARK MODE VARS (default) ── */
-:root {
-  --bg: #050505;
-  --text: #ffffff;
-  --text-muted: #9ca3af;
-  --text-subtle: #6b7280;
-  --card-bg: rgba(0,0,0,0.4);
-  --card-border: rgba(255,255,255,0.1);
-  --nav-bg: rgba(5,5,5,0.97);
-  --nav-border: rgba(255,255,255,0.1);
-  --pill-color: #aaa;
-  --pill-border: rgba(255,255,255,0.15);
-  --pill-hover: #fff;
-  --pill-hover-border: #fff;
-  --section-border: rgba(255,255,255,0.08);
-  --cmdk-bg: #0b0b0b;
-  --cmdk-border: rgba(255,255,255,0.1);
-  --grid-line: rgba(255,255,255,0.05);
-  --dropdown-bg: rgba(11,11,11,0.95);
-  --dropdown-border: rgba(255,255,255,0.1);
-  --hire-card-bg: rgba(255,255,255,0.05);
-  --hire-card-color: #ccc;
-  --quote-color: #9ca3af;
-  --footer-color: #374151;
-}
-
-/* ── LIGHT MODE VARS ── */
-body.light {
-  --bg: #f5f5f5;
-  --text: #111111;
-  --text-muted: #555555;
-  --text-subtle: #777777;
-  --card-bg: rgba(255,255,255,0.85);
-  --card-border: rgba(0,0,0,0.1);
-  --nav-bg: rgba(245,245,245,0.97);
-  --nav-border: rgba(0,0,0,0.1);
-  --pill-color: #444;
-  --pill-border: rgba(0,0,0,0.2);
-  --pill-hover: #000;
-  --pill-hover-border: #000;
-  --section-border: rgba(0,0,0,0.1);
-  --cmdk-bg: #ffffff;
-  --cmdk-border: rgba(0,0,0,0.1);
-  --grid-line: rgba(0,0,0,0.04);
-  --dropdown-bg: rgba(245,245,245,0.97);
-  --dropdown-border: rgba(0,0,0,0.1);
-  --hire-card-bg: rgba(0,0,0,0.05);
-  --hire-card-color: #555;
-  --quote-color: #666;
-  --footer-color: #999;
-}
-
-body { background: var(--bg); color: var(--text); }
-
+/* GRID */
 .grid-overlay {
   position:fixed; inset:0; pointer-events:none;
-  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 90px 90px;
 }
 
-.cursor-glow {
-  position:fixed; width:300px; height:300px; border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
-  pointer-events:none; transform:translate(-50%,-50%); z-index:0;
-}
-body.light .cursor-glow { background:radial-gradient(circle, rgba(0,0,0,0.04), transparent 60%); }
-
-/* NAV */
+/* NAVBAR */
 .navbar {
   position: sticky;
   top: 0;
@@ -92,7 +34,6 @@ body.light .cursor-glow { background:radial-gradient(circle, rgba(0,0,0,0.04), t
 
   background: rgba(10,10,10,0.6);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 
   border-top: 1px dotted rgba(255,255,255,0.15);
   border-bottom: 1px dotted rgba(255,255,255,0.15);
@@ -100,13 +41,11 @@ body.light .cursor-glow { background:radial-gradient(circle, rgba(0,0,0,0.04), t
   transition: all 0.3s ease;
 }
 
-/* scroll state */
 .navbar.scrolled {
   background: rgba(10,10,10,0.85);
   box-shadow: 0 6px 30px rgba(0,0,0,0.4);
 }
 
-/* LEFT SIDE */
 .nav-left {
   display: flex;
   align-items: center;
@@ -115,495 +54,168 @@ body.light .cursor-glow { background:radial-gradient(circle, rgba(0,0,0,0.04), t
 
 .logo {
   font-weight: 700;
-  font-size: 18px;
-  color: white;
-  padding-right: 10px;
   border-right: 1px solid rgba(255,255,255,0.2);
+  padding-right: 10px;
 }
 
-.nav-left a,
-.dropdown span {
-  color: #a1a1aa;
+.nav-left a, .dropdown span {
+  color: rgba(255,255,255,0.7);
   text-decoration: none;
   font-size: 14px;
-  transition: 0.2s;
 }
 
-.nav-left a:hover,
-.dropdown span:hover {
-  color: white;
-}
+.nav-left a:hover { color: white; }
 
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  z-index: 999;
-
-  background-image: radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
-  background-size: 10px 2px;
-}
-
-body::before {
-  top: 0;
-}
-
-body::after {
-  bottom: 0;
-}
-
-.nav-left a,
-.dropdown span {
-  color: rgba(255,255,255,0.7);
-}
-
-.nav-left a:hover {
-  color: white;
-  text-shadow: 0 0 8px rgba(255,255,255,0.3);
-}
-
-/* RIGHT SIDE */
+/* RIGHT */
 .nav-right {
   display: flex;
-  align-items: center;
   gap: 16px;
 }
 
-.shortcut {
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  color: #a1a1aa;
+/* DROPDOWN */
+.dropdown {
+  position: relative;
 }
 
-.theme-toggle {
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* MOBILE FIX */
-@media (max-width: 768px) {
-  .nav-left {
-    gap: 16px;
-  }
-
-  .shortcut {
-    display: none;
-  }
-}
-
-nav a, .nav-links a, .nav-links span { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-nav a:hover, .nav-links a:hover, .nav-links span:hover { color: var(--text); }
-
-
-/* CARD */
-.card {
-  border: 1px solid var(--card-border);
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* SECTION LINE */
-.section-line { border-top: 1px solid var(--section-border); }
-
-/* PILL */
-.pill {
-  border: 1px solid var(--pill-border);
-  padding: 4px 10px; border-radius: 999px; font-size: 11px;
-  color: var(--pill-color); transition: all 0.2s; cursor: default;
-}
-a.pill { cursor: pointer; text-decoration: none; }
-.pill:hover { color: var(--pill-hover); border-color: var(--pill-hover-border); }
-
-/* DP */
-.dp-avatar {
-  width:64px; height:64px; border-radius:10px;
-  border:1px solid var(--card-border); object-fit:cover;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.dp-avatar:hover { transform:scale(1.1); border-color: var(--text); }
-
-/* WHY HIRE DROPDOWN */
 .why-hire-dropdown {
-  background: rgba(20,20,20,0.45); /* more transparent */
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+
+  width: 260px;
+  padding: 14px;
+
+  background: rgba(20,20,20,0.45);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
 
   border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
+
   transition: all 0.25s ease;
 }
 
-/* show */
-.why-hire-dropdown.open {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-/* dropdown animation handled properly */
 .why-hire-dropdown.open {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.why-hire-dropdown::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2);
-  border-radius: inherit;
-  z-index: -1;
-}
-
-/* grid stays mostly same */
+/* GRID */
 .why-hire-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-/* upgraded cards */
+/* CARDS */
 .hire-card {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  padding: 10px;
+
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+
+  text-align: center;
+  transition: all 0.25s ease;
 }
 
-/* better hover */
 .hire-card:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.1);
   color: white;
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
-/* CMD K */
-#cmdk {
-  display:none; position:fixed; inset:0;
-  background:rgba(0,0,0,0.6); backdrop-filter:blur(8px);
-  z-index:50000; align-items:center; justify-content:center;
-}
-#cmdkBox {
-  background: var(--cmdk-bg); border:1px solid var(--cmdk-border);
-  padding:20px; border-radius:12px; width:min(400px, 90vw);
-}
-#cmdkInput { background:transparent; color: var(--text); width:100%; border:1px solid var(--cmdk-border); padding:8px; border-radius:6px; outline:none; font-size:14px; }
 
-/* KIRANA CASE STUDY */
-.case-hidden { max-height:0; overflow:hidden; opacity:0; transition:all 0.6s ease; }
-.case-show { max-height:3000px; opacity:1; }
-.case-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
-.case-card {
-  background: var(--hire-card-bg); border:1px solid var(--card-border);
-  border-radius:12px; padding:16px; transition:0.3s;
+/* CARD */
+.card {
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
 }
-.case-card:hover { transform:translateY(-3px); border-color: var(--text-muted); }
-.case-card h3 { font-size:13px; margin-bottom:8px; color: var(--text); }
-.case-card p, .case-card ul { font-size:12px; color: var(--text-muted); line-height:1.6; }
-.case-card ul { padding-left:16px; }
 
-/* QUOTE + FOOTER */
-#quote { color: var(--quote-color); }
-.footer-text { color: var(--footer-color); }
+/* TEXT */
+.t-muted { color:#9ca3af; }
+.t-subtle { color:#6b7280; }
+.t-main { color:white; }
 
-/* TEXT HELPERS */
-.t-muted { color: var(--text-muted); }
-.t-subtle { color: var(--text-subtle); }
-.t-main { color: var(--text); }
+.dp-avatar {
+  width:64px; height:64px;
+  border-radius:10px;
+}
 </style>
 </head>
 
 <body>
+
 <div class="grid-overlay"></div>
-<div class="cursor-glow" id="glow"></div>
 
 <!-- NAV -->
 <nav class="navbar">
   <div class="nav-left">
     <div class="logo">GHV</div>
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <div class="dropdown" id="whyBtn" style="position:relative;">
-  <span>Why Hire Me ▾</span>
+    <a href="#">Home</a>
+    <a href="#">Projects</a>
 
-  <div class="why-hire-dropdown" id="whyDropdown">
-    <div class="why-hire-grid">
-      <div class="hire-card">Fast learner</div>
-      <div class="hire-card">Ships real products</div>
-      <div class="hire-card">Consistent growth</div>
-      <div class="hire-card">Problem solver</div>
-      <div class="hire-card">Self-driven</div>
+    <div class="dropdown" id="whyBtn">
+      <span>Why Hire Me ▾</span>
+
+      <div class="why-hire-dropdown" id="whyDropdown">
+        <div class="why-hire-grid">
+          <div class="hire-card">Fast learner</div>
+          <div class="hire-card">Ships real products</div>
+          <div class="hire-card">Consistent growth</div>
+          <div class="hire-card">Problem solver</div>
+          <div class="hire-card">Self-driven</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+
   </div>
 
   <div class="nav-right">
-    <div id="cmdBtn" class="shortcut">⌘ K</div>
-    <div id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</div>
+    🌙
   </div>
 </nav>
 
-<div style="position:relative">
-  <div class="why-hire-dropdown" id="whyDropdown">
-    <h2 style="font-size:11px;font-weight:600;margin-bottom:12px;text-align:center" class="t-main">Why Hire Me</h2>
-    <div class="why-hire-grid">
-      <div class="hire-card">Fast learner</div>
-      <div class="hire-card">Ships real products</div>
-      <div class="hire-card">Consistent growth</div>
-      <div class="hire-card">Problem solver</div>
-      <div class="hire-card">Self-driven</div>
-    </div>
-  </div>
-</div>
+<!-- MAIN -->
+<main style="padding-top:80px;max-width:720px;margin:auto;padding:24px">
 
-<!-- CMD K -->
-<div id="cmdk">
-  <div id="cmdkBox">
-    <input id="cmdkInput" placeholder="Search GitHub / LinkedIn / Email..."/>
-    <p style="font-size:11px;margin-top:8px" class="t-subtle">Press Esc to close</p>
-    <div id="cmdkResults" style="margin-top:12px;display:flex;flex-direction:column;gap:4px"></div>
-  </div>
-</div>
+<div class="card" style="padding:24px;border-radius:16px">
 
-<main style="padding-top:80px;max-width:720px;margin:0 auto;padding-left:24px;padding-right:24px;padding-bottom:64px">
-
-<div class="card rounded-2xl" style="padding:24px 28px">
-
-  <!-- PROFILE -->
-  <div style="display:flex;align-items:center;gap:16px">
-    <img src="images/dp.jpg" class="dp-avatar" alt="Harshavardhan"/>
-    <div style="flex:1">
-      <h1 style="font-size:13px;font-weight:600" class="t-main">Gurram Harshavardhan <span style="color:#60a5fa">✔</span></h1>
-      <p style="font-size:11px;margin-top:2px" class="t-muted">Final-year CS student · Backend & Web Dev</p>
-      <p style="font-size:10px;margin-top:2px" class="t-subtle">● open to work · Bangalore</p>
-    </div>
-    <div style="font-size:10px;text-align:right" class="t-subtle">
-      <div>🇮🇳 BLR</div>
-      <div style="margin-top:4px">2026</div>
+  <div style="display:flex;gap:16px;align-items:center">
+    <img src="images/dp.jpg" class="dp-avatar"/>
+    <div>
+      <h1 class="t-main">Gurram Harshavardhan ✔</h1>
+      <p class="t-muted">Final-year CS student · Backend & Web Dev</p>
+      <p class="t-subtle">Bangalore</p>
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <div class="section-line" style="margin-top:24px;padding-top:16px">
-    <h2 style="font-size:11px;margin-bottom:8px" class="t-subtle">About</h2>
-    <p style="font-size:12px;line-height:1.8" class="t-muted">
-      Final-year Computer Science student with hands-on internship experience in Web Development at Sunver Coresynergy Solutions. Built and delivered a full-stack SaaS product end-to-end. Seeking opportunities to apply backend and web development skills, learn from industry professionals, and contribute to real-world engineering challenges.
-    </p>
-  </div>
-
-  <!-- CONNECT -->
-  <div class="section-line" style="margin-top:24px;padding-top:16px">
-    <h2 style="font-size:11px;margin-bottom:10px" class="t-subtle">Connect</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:8px">
-      <a href="https://github.com/notgreatbutOK" target="_blank" class="pill">GitHub</a>
-      <a href="https://www.linkedin.com/in/gurram-harshavardhan2005" target="_blank" class="pill">LinkedIn</a>
-      <a href="mailto:gurramharsha2005@gmail.com" class="pill">Email</a>
-      <a href="tel:+919902328374" class="pill">Phone</a>
-    </div>
-  </div>
-
-  <!-- GITHUB ACTIVITY -->
-  <div class="section-line" style="margin-top:24px;padding-top:16px">
-    <h2 style="font-size:11px;margin-bottom:10px" class="t-subtle">GitHub Activity</h2>
-    <img src="https://ghchart.rshah.org/notgreatbutOK" style="width:100%;opacity:0.8;border-radius:6px" alt="GitHub activity"/>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="section-line" style="margin-top:24px;padding-top:16px">
-    <h2 style="font-size:11px;margin-bottom:10px" class="t-subtle">Skills</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:8px">
-      <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">SQL</span>
-      <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">MongoDB</span>
-      <span class="pill">HTML/CSS</span><span class="pill">Git</span><span class="pill">GitHub</span>
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <div class="section-line" style="margin-top:24px;padding-top:16px">
-    <h2 style="font-size:11px;margin-bottom:12px" class="t-subtle">Experience</h2>
-    <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <div>
-        <p style="font-size:12px;font-weight:600" class="t-main">Sunver Coresynergy Solutions Pvt Ltd</p>
-        <p style="font-size:11px;margin-top:2px" class="t-muted">Web Development Intern</p>
-        <p style="font-size:10px;margin-top:4px" class="t-subtle">Node.js · Express.js · MongoDB · HTML/CSS/JS</p>
-        <ul style="margin-top:8px;font-size:11px;list-style:none;padding:0;display:flex;flex-direction:column;gap:4px" class="t-muted">
-          <li>→ Built Kirana Store SaaS app end-to-end</li>
-          <li>→ REST APIs + MongoDB database design</li>
-          <li>→ Responsive frontend for store management</li>
-        </ul>
-        <div style="margin-top:12px">
-          <button onclick="toggleKirana()" class="case-btn" style="font-size:11px;font-weight:600;color:#93c5fd;border:1px solid #93c5fd;background:none;padding:6px 12px;border-radius:6px;cursor:pointer;transition:all 0.2s">
-            → View Case Study
-          </button>
-        </div>
-      </div>
-      <div style="font-size:10px;text-align:right;flex-shrink:0;margin-left:16px" class="t-subtle">
-        <div>Feb 2026</div><div>— Mar 2026</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KIRANA CASE STUDY -->
-  <div class="case-hidden" id="kirana" style="margin-top:16px">
-    <h2 style="font-size:18px;font-weight:700;margin-bottom:4px" class="t-main">Kirana SaaS</h2>
-    <p style="font-size:12px;margin-bottom:20px" class="t-muted">Digital identity for local stores — powered by WhatsApp</p>
-    <div class="case-grid">
-      <div class="case-card"><h3>🚩 Problem</h3><p>Local kirana stores struggle to go online. Most owners lack technical knowledge and miss digital opportunities.</p></div>
-      <div class="case-card"><h3>💡 Solution</h3><p>Built a simple SaaS platform that brings stores online instantly using WhatsApp — no coding, no setup.</p></div>
-      <div class="case-card"><h3>⚙️ Features</h3><ul><li>WhatsApp ordering system</li><li>Digital product catalog</li><li>Repeat order flow</li><li>Broadcast offers</li></ul></div>
-      <div class="case-card"><h3>🎯 Insight</h3><p>The real problem wasn't automation — it was lack of online presence. Simplicity > complexity.</p></div>
-      <div class="case-card"><h3>🚀 Value</h3><p>Helps stores go online in minutes using familiar tools, improving convenience and saving time.</p></div>
-      <div class="case-card"><h3>🧠 Learnings</h3><p>Online presence alone isn't enough — discovery and visibility are the next challenges.</p></div>
-    </div>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="section-line" id="projects" style="margin-top:24px;padding-top:16px">
-    <a href="https://github.com/notgreatbutOK" target="_blank" style="display:block;text-decoration:none;transition:opacity 0.2s" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
-      <h2 style="font-size:11px;margin-bottom:6px" class="t-subtle">Projects ↗</h2>
-      <p style="font-size:12px" class="t-muted">View all projects on GitHub</p>
-    </a>
-  </div>
-
-  <!-- EDUCATION -->
-  <div class="section-line" style="margin-top:24px;padding-top:16px">
-    <h2 style="font-size:11px;margin-bottom:12px" class="t-subtle">Education</h2>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="display:flex;justify-content:space-between">
-        <div><p style="font-size:12px;font-weight:500" class="t-main">Gopalan College of Commerce</p><p style="font-size:10px;margin-top:2px" class="t-muted">B.Sc Computer Science</p></div>
-        <span style="font-size:10px" class="t-subtle">2023–2026</span>
-      </div>
-      <div><p style="font-size:12px" class="t-muted">Gopalan Pre-University College</p><p style="font-size:10px;margin-top:2px" class="t-subtle">PUC · 12th</p></div>
-      <div><p style="font-size:12px" class="t-muted">Sri Chaitanya Techno School</p><p style="font-size:10px;margin-top:2px" class="t-subtle">10th Standard</p></div>
-    </div>
-  </div>
-
-</div>
-
-<!-- QUOTE -->
-<div style="margin-top:32px;border-top:1px solid var(--section-border);padding-top:16px;text-align:center">
-  <p id="quote" style="font-size:12px;font-style:italic;cursor:pointer;transition:opacity 0.2s" title="Click for new quote">Loading quote...</p>
-  <p style="font-size:10px;margin-top:6px" class="t-subtle">click to refresh</p>
-</div>
-
-<div style="margin-top:20px;text-align:center;font-size:10px" class="footer-text">
-  © <span id="year"></span> Gurram Harshavardhan · Bangalore
 </div>
 
 </main>
 
 <script>
-// Cursor glow (desktop only)
-if (window.matchMedia('(pointer:fine)').matches) {
-  const glow = document.getElementById('glow');
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-} else {
-  document.getElementById('glow').style.display = 'none';
-}
-
-// Theme toggle
-const themeBtn = document.getElementById('themeToggle');
-function setTheme(light) {
-  document.body.classList.toggle('light', light);
-  themeBtn.textContent = light ? '☀️' : '🌙';
-  localStorage.setItem('theme', light ? 'light' : 'dark');
-}
-themeBtn.addEventListener('click', () => setTheme(!document.body.classList.contains('light')));
-setTheme(localStorage.getItem('theme') === 'light');
-
-// Why Hire Me dropdown — click/tap toggle
-const whyBtn = document.getElementById('whyBtn');
-const whyDropdown = document.getElementById('whyDropdown');
-whyBtn.addEventListener('click', e => {
-  e.stopPropagation();
-  whyDropdown.classList.toggle('open');
-});
-document.addEventListener('click', () => whyDropdown.classList.remove('open'));
-
-// CMD+K
-const modal = document.getElementById('cmdk');
-const cmdLinks = [
-  { label: 'GitHub', url: 'https://github.com/notgreatbutOK' },
-  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/gurram-harshavardhan2005' },
-  { label: 'Email', url: 'mailto:gurramharsha2005@gmail.com' },
-];
-function openCmdk() { modal.style.display='flex'; renderCmdResults(''); document.getElementById('cmdkInput').focus(); }
-document.getElementById('cmdBtn').addEventListener('click', openCmdk);
-document.addEventListener('keydown', e => {
-  if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='k') { e.preventDefault(); openCmdk(); }
-  if (e.key==='Escape') modal.style.display='none';
-});
-modal.addEventListener('click', e => { if(e.target===modal) modal.style.display='none'; });
-document.getElementById('cmdkInput').addEventListener('input', e => renderCmdResults(e.target.value));
-function renderCmdResults(q) {
-  const filtered = cmdLinks.filter(l => l.label.toLowerCase().includes(q.toLowerCase()));
-  document.getElementById('cmdkResults').innerHTML = filtered.map(l =>
-    `<a href="${l.url}" target="_blank" style="display:block;padding:8px 12px;border-radius:6px;font-size:12px;text-decoration:none;transition:background 0.15s" class="t-muted" onmouseover="this.style.background='rgba(128,128,128,0.1)'" onmouseout="this.style.background=''">${l.label}</a>`
-  ).join('');
-}
-
-// Quotes
-const quotes = [
-  { quote: "First, solve the problem. Then, write the code.", author: "John Johnson" },
-  { quote: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House" },
-  { quote: "Make it work, make it right, make it fast.", author: "Kent Beck" },
-  { quote: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
-  { quote: "The best error message is the one that never shows up.", author: "Thomas Fuchs" },
-  { quote: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
-  { quote: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
-  { quote: "It works on my machine.", author: "Every Developer Ever" },
-  { quote: "Clean code always looks like it was written by someone who cares.", author: "Robert C. Martin" },
-  { quote: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
-];
-let lastQ = -1;
-function loadQuote() {
-  let i; do { i = Math.floor(Math.random()*quotes.length); } while(i===lastQ);
-  lastQ = i;
-  const el = document.getElementById('quote');
-  el.style.opacity='0';
-  setTimeout(()=>{ el.innerText=`"${quotes[i].quote}" — ${quotes[i].author}`; el.style.opacity='1'; }, 180);
-}
-document.getElementById('quote').style.transition='opacity 0.2s';
-document.getElementById('quote').addEventListener('click', loadQuote);
-loadQuote();
-setInterval(loadQuote, 10000);
-
-// Year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Kirana toggle
-function toggleKirana() {
-  const s = document.getElementById('kirana');
-  const b = document.querySelector('.case-btn');
-  const isOpen = s.classList.contains('case-show');
-  s.classList.toggle('case-show', !isOpen);
-  s.classList.toggle('case-hidden', isOpen);
-  b.innerText = isOpen ? '→ View Case Study' : '→ Hide Case Study';
-  if (!isOpen) setTimeout(()=>s.scrollIntoView({behavior:'smooth'}), 200);
-}
-
+// scroll nav
 window.addEventListener("scroll", () => {
-  const nav = document.querySelector(".navbar");
-  if (window.scrollY > 20) {
-    nav.classList.add("scrolled");
-  } else {
-    nav.classList.remove("scrolled");
-  }
+  document.querySelector(".navbar")
+    .classList.toggle("scrolled", window.scrollY > 20);
 });
+
+// dropdown hover
+const btn = document.getElementById("whyBtn");
+const drop = document.getElementById("whyDropdown");
+
+btn.addEventListener("mouseenter", () => drop.classList.add("open"));
+btn.addEventListener("mouseleave", () => drop.classList.remove("open"));
 </script>
+
 </body>
 </html>
