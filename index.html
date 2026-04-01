@@ -230,29 +230,17 @@ a.pill { cursor: pointer; text-decoration: none; }
 
 /* WHY HIRE DROPDOWN */
 .why-hire-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  margin-top: 10px;
-  width: 260px;
-
-  background: rgba(15,15,15,0.6);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(20,20,20,0.45); /* more transparent */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  padding: 14px;
-
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 
   opacity: 0;
   transform: translateY(10px);
-  transition: all 0.25s ease;
-
   pointer-events: none;
+  transition: all 0.25s ease;
 }
 
 /* show */
@@ -269,6 +257,15 @@ a.pill { cursor: pointer; text-decoration: none; }
   pointer-events: auto;
 }
 
+.why-hire-dropdown::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  border-radius: inherit;
+  z-index: -1;
+}
+
 /* grid stays mostly same */
 .why-hire-grid {
   display: grid;
@@ -278,23 +275,9 @@ a.pill { cursor: pointer; text-decoration: none; }
 
 /* upgraded cards */
 .hire-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-
-  padding: 10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 11px;
-  color: rgba(255,255,255,0.7);
-  font-weight: 500;
-  text-align: center;
-
-  transition: all 0.25s ease;
-  cursor: pointer;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
 }
 
 /* better hover */
