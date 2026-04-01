@@ -1,357 +1,252 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Portfolio of Gurram Harshavardhan - Final-year Computer Science student specializing in backend and web development. Experience with Node.js, Express, MongoDB."/>
+<meta name="description" content="Portfolio of Gurram Harshavardhan - Final-year Computer Science student specializing in backend and web development."/>
 <title>Harshavardhan | Portfolio</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"/>
-
 <style>
 html { scroll-behavior: smooth; }
 body { background:#050505; font-family: Inter, sans-serif; color: #fff; overflow-x: hidden; }
-main { padding-top: 96px; }
-body.light { background:#f5f5f5; color: #000; }
 
-.grid-overlay{position:fixed;inset:0;background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-background-size:90px 90px;pointer-events:none}
-body.light .grid-overlay{background-image:
-linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)}
-
-.cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;
-background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
-pointer-events:none;transform:translate(-50%,-50%);z-index:0}
-body.light .cursor-glow{background:radial-gradient(circle, rgba(0,0,0,0.03), transparent 60%)}
-
-.section-line{border-top:1px solid rgba(255,255,255,0.08)}
-body.light .section-line{border-top:1px solid rgba(0,0,0,0.1)}
-
-.pill{border:1px solid rgba(255,255,255,0.15);padding:4px 10px;border-radius:999px;font-size:11px;color:#aaa;transition:.2s}
-.pill:hover{color:white;border-color:white}
-body.light .pill{border:1px solid rgba(0,0,0,0.15);color:#666}
-body.light .pill:hover{color:#000;border-color:#000}
-
-.card{border:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.4);backdrop-filter:blur(12px)}
-body.light .card{border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.6)}
-
-.dropdown{display:none;position:absolute;top:30px;right:0;background:#0b0b0b;border:1px solid rgba(255,255,255,0.1);padding:10px;border-radius:10px}
-body.light .dropdown{background:#f0f0f0;border:1px solid rgba(0,0,0,0.1)}
-.nav-more:hover .dropdown{display:block}
-
-#cmdk{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:50;align-items:center;justify-content:center}
-body.light #cmdk{background:rgba(0,0,0,0.3)}
-#cmdkBox{background:#0b0b0b;border:1px solid rgba(255,255,255,0.1);padding:20px;border-radius:12px;width:400px}
-body.light #cmdkBox{background:#fff;border:1px solid rgba(0,0,0,0.1)}
-
-.dp-avatar {
-  width: 64px; height: 64px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-  object-fit: cover;
-  transition: transform 0.3s, border-color 0.3s;
-  background: #111;
-}
-body.light .dp-avatar{background: #f0f0f0;border: 1px solid rgba(0,0,0,0.1)}
-.dp-avatar:hover { transform: scale(1.1); border-color: white; }
-body.light .dp-avatar:hover { border-color: #000; }
-
-#dpFallback {
-  display: none;
-  width: 64px;
-  height: 64px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: #111;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  display: flex;
-  flex-shrink: 0;
-}
-body.light #dpFallback {
-  background: #f0f0f0;
-  border-color: rgba(0,0,0,0.1);
-  color: #000;
+/* ── DARK MODE VARS (default) ── */
+:root {
+  --bg: #050505;
+  --text: #ffffff;
+  --text-muted: #9ca3af;
+  --text-subtle: #6b7280;
+  --card-bg: rgba(0,0,0,0.4);
+  --card-border: rgba(255,255,255,0.1);
+  --nav-bg: rgba(5,5,5,0.97);
+  --nav-border: rgba(255,255,255,0.1);
+  --pill-color: #aaa;
+  --pill-border: rgba(255,255,255,0.15);
+  --pill-hover: #fff;
+  --pill-hover-border: #fff;
+  --section-border: rgba(255,255,255,0.08);
+  --cmdk-bg: #0b0b0b;
+  --cmdk-border: rgba(255,255,255,0.1);
+  --grid-line: rgba(255,255,255,0.05);
+  --dropdown-bg: rgba(11,11,11,0.95);
+  --dropdown-border: rgba(255,255,255,0.1);
+  --hire-card-bg: rgba(255,255,255,0.05);
+  --hire-card-color: #ccc;
+  --quote-color: #9ca3af;
+  --footer-color: #374151;
 }
 
-nav{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  border-color:rgba(255,255,255,0.1)!important;
-  background:rgba(0,0,0,0.95)!important;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-}
-body.light nav{
-  border-color:rgba(0,0,0,0.1)!important;
-  background:rgba(255,255,255,0.8)!important;
-  backdrop-filter: blur(10px);
-}
-
-body.light input{background:#fff!important;color:#000!important;border-color:rgba(0,0,0,0.1)!important}
-body.light input::placeholder{color:#999}
-
-.why-me{list-style:none;padding:0;margin:0}
-.why-me li{transition:.2s;padding-left:0}
-.why-me li:hover{background:rgba(255,255,255,0.05);border-radius:4px;padding-left:4px}
-body.light .why-me li:hover{background:rgba(0,0,0,0.05)}
-
-.why-hire-dropdown{
-  display:none;
-  position:fixed;
-  top:50px;
-  right:24px;
-  width:min(320px, 90vw);
-  background:rgba(11,11,11,0.9);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;
-  padding:16px;
-  box-shadow:0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1);
-  z-index:1000;
-  transition:box-shadow 0.3s ease;
-}
-body.light .why-hire-dropdown{
-  background:rgba(255,255,255,0.9);
-  border:1px solid rgba(0,0,0,0.1);
-  box-shadow:0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05), 0 0 20px rgba(0,0,0,0.1);
+/* ── LIGHT MODE VARS ── */
+body.light {
+  --bg: #f5f5f5;
+  --text: #111111;
+  --text-muted: #555555;
+  --text-subtle: #777777;
+  --card-bg: rgba(255,255,255,0.85);
+  --card-border: rgba(0,0,0,0.1);
+  --nav-bg: rgba(245,245,245,0.97);
+  --nav-border: rgba(0,0,0,0.1);
+  --pill-color: #444;
+  --pill-border: rgba(0,0,0,0.2);
+  --pill-hover: #000;
+  --pill-hover-border: #000;
+  --section-border: rgba(0,0,0,0.1);
+  --cmdk-bg: #ffffff;
+  --cmdk-border: rgba(0,0,0,0.1);
+  --grid-line: rgba(0,0,0,0.04);
+  --dropdown-bg: rgba(245,245,245,0.97);
+  --dropdown-border: rgba(0,0,0,0.1);
+  --hire-card-bg: rgba(0,0,0,0.05);
+  --hire-card-color: #555;
+  --quote-color: #666;
+  --footer-color: #999;
 }
 
-.why-hire-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
+body { background: var(--bg); color: var(--text); }
+
+.grid-overlay {
+  position:fixed; inset:0; pointer-events:none;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 90px 90px;
 }
 
-.hire-card{
-  background:rgba(255,255,255,0.05);
-  border-radius:8px;
-  padding:12px 10px;
-  min-height:40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:transform 0.2s ease, background 0.2s ease, filter 0.2s ease;
-  cursor:pointer;
-  font-size:10px;
-  color:#ccc;
-  font-weight:500;
-  text-align:center;
+.cursor-glow {
+  position:fixed; width:300px; height:300px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+  pointer-events:none; transform:translate(-50%,-50%); z-index:0;
 }
-body.light .hire-card{
-  background:rgba(0,0,0,0.05);
-  color:#666;
-}
+body.light .cursor-glow { background:radial-gradient(circle, rgba(0,0,0,0.04), transparent 60%); }
 
-.project {
-  padding: 80px 20px;
-  background: #0f0f0f;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
+/* NAV */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:9999;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 24px; font-size: 12px;
+  color: var(--text-muted);
 }
+nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+nav a:hover { color: var(--text); }
+.nav-logo { font-weight: 700; color: var(--text); font-size: 13px; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
 
-.project .card {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 16px;
-  transition: 0.3s ease;
-  border: 1px solid #2a2a2a;
-}
-
-.profile-card {
-  position: relative;
-  z-index: 1;
-}
-
-.project .card:hover {
-  transform: translateY(-5px);
-  border-color: #555;
-}
-
-.project .card h3 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-}
-
-.project .card p,
-.project .card ul {
-  color: #ccc;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.project .card ul {
-  padding-left: 18px;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-}
-
-.project h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.tagline {
-  color: #aaa;
-  margin-bottom: 40px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
+/* CARD */
 .card {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 16px;
-  transition: 0.3s ease;
-  border: 1px solid #2a2a2a;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #555;
-}
+/* SECTION LINE */
+.section-line { border-top: 1px solid var(--section-border); }
 
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+/* PILL */
+.pill {
+  border: 1px solid var(--pill-border);
+  padding: 4px 10px; border-radius: 999px; font-size: 11px;
+  color: var(--pill-color); transition: all 0.2s; cursor: default;
 }
+a.pill { cursor: pointer; text-decoration: none; }
+.pill:hover { color: var(--pill-hover); border-color: var(--pill-hover-border); }
 
-.card p,
-.card ul {
-  color: #ccc;
-  font-size: 0.95rem;
-  line-height: 1.5;
+/* DP */
+.dp-avatar {
+  width:64px; height:64px; border-radius:10px;
+  border:1px solid var(--card-border); object-fit:cover;
+  transition: transform 0.3s, border-color 0.3s;
 }
+.dp-avatar:hover { transform:scale(1.1); border-color: var(--text); }
 
-.card ul {
-  padding-left: 18px;
+/* WHY HIRE DROPDOWN */
+.why-hire-dropdown {
+  display:none; position:fixed; top:50px; right:24px;
+  width: min(320px, 90vw);
+  background: var(--dropdown-bg);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--dropdown-border);
+  border-radius:16px; padding:16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  z-index:10000;
 }
-.hire-card:hover{
-  transform:translateY(-2px);
-  background:rgba(255,255,255,0.1);
-  filter:brightness(1.1);
+.why-hire-dropdown.open { display:block; }
+.why-hire-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.hire-card {
+  background: var(--hire-card-bg); border-radius:8px; padding:12px 10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; color: var(--hire-card-color); font-weight:500;
+  text-align:center; transition: all 0.2s; cursor:pointer;
 }
-body.light .hire-card:hover{
-  background:rgba(0,0,0,0.1);
-  filter:brightness(0.9);
-}
+.hire-card:hover { transform:translateY(-2px); filter:brightness(1.2); }
 
-.why-hire-dropdown.open{display:block}
-
-/* Kirana toggle animation */
-.hidden {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.6s ease;
+/* CMD K */
+#cmdk {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.6); backdrop-filter:blur(8px);
+  z-index:50000; align-items:center; justify-content:center;
 }
-
-.show {
-  max-height: 2000px;
-  opacity: 1;
+#cmdkBox {
+  background: var(--cmdk-bg); border:1px solid var(--cmdk-border);
+  padding:20px; border-radius:12px; width:min(400px, 90vw);
 }
+#cmdkInput { background:transparent; color: var(--text); width:100%; border:1px solid var(--cmdk-border); padding:8px; border-radius:6px; outline:none; font-size:14px; }
 
-/* ===== LIGHT MODE ===== */
-body.light { background: #f5f5f5 !important; color: #111 !important; }
-body.light * { color: inherit; }
-body.light h1, body.light h2, body.light h3, body.light p { color: #111; }
-body.light nav { background: rgba(255,255,255,0.95) !important; border-color: rgba(0,0,0,0.1) !important; }
-body.light .card { background: rgba(255,255,255,0.85) !important; border-color: rgba(0,0,0,0.1) !important; color: #111 !important; }
-body.light .pill { border-color: rgba(0,0,0,0.2) !important; color: #444 !important; }
-body.light .pill:hover { color: #000 !important; border-color: #000 !important; }
-body.light .section-line { border-color: rgba(0,0,0,0.1) !important; }
-body.light .grid-overlay { background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px) !important; }
-body.light #cmdkBox { background: #fff !important; color: #111 !important; }
-body.light input { background: #fff !important; color: #111 !important; }
-body.light .why-hire-dropdown { background: rgba(245,245,245,0.95) !important; border-color: rgba(0,0,0,0.1) !important; }
-body.light .hire-card { background: rgba(0,0,0,0.05) !important; color: #444 !important; }
-body.light .hire-card:hover { background: rgba(0,0,0,0.1) !important; }
-body.light #quote { color: #555 !important; }
-body.light .text-gray-700 { color: #666 !important; }
+/* KIRANA CASE STUDY */
+.case-hidden { max-height:0; overflow:hidden; opacity:0; transition:all 0.6s ease; }
+.case-show { max-height:3000px; opacity:1; }
+.case-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
+.case-card {
+  background: var(--hire-card-bg); border:1px solid var(--card-border);
+  border-radius:12px; padding:16px; transition:0.3s;
+}
+.case-card:hover { transform:translateY(-3px); border-color: var(--text-muted); }
+.case-card h3 { font-size:13px; margin-bottom:8px; color: var(--text); }
+.case-card p, .case-card ul { font-size:12px; color: var(--text-muted); line-height:1.6; }
+.case-card ul { padding-left:16px; }
+
+/* QUOTE + FOOTER */
+#quote { color: var(--quote-color); }
+.footer-text { color: var(--footer-color); }
+
+/* TEXT HELPERS */
+.t-muted { color: var(--text-muted); }
+.t-subtle { color: var(--text-subtle); }
+.t-main { color: var(--text); }
 </style>
 </head>
 
-<body class="text-white">
+<body>
 <div class="grid-overlay"></div>
 <div class="cursor-glow" id="glow"></div>
 
 <!-- NAV -->
-<nav class="fixed top-0 w-full flex justify-between px-6 py-3 text-xs text-gray-400 border-b border-white/10 backdrop-blur bg-black/30 z-10">
-  <div class="font-bold text-white">GHV</div>
-  <div class="flex gap-6 items-center">
-    <a href="#" class="hover:text-white">Home</a>
-    <a href="#projects" class="hover:text-white">Projects</a>
-    <div class="relative nav-more">
-      <span class="cursor-pointer hover:text-white">Why Hire Me ▾</span>
-      <div class="why-hire-dropdown">
-        <h2 class="text-xs text-white font-medium mb-3 text-center">Why Hire Me</h2>
+<nav>
+  <div class="nav-logo">GHB</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#projects">Projects</a>
+    <div style="position:relative">
+      <span id="whyBtn" style="cursor:pointer;transition:color 0.2s" class="t-muted">Why Hire Me ▾</span>
+      <div class="why-hire-dropdown" id="whyDropdown">
+        <h2 style="font-size:11px;font-weight:600;margin-bottom:12px;text-align:center" class="t-main">Why Hire Me</h2>
         <div class="why-hire-grid">
           <div class="hire-card">Fast learner</div>
-          <div class="hire-card">Build real-world projects</div>
+          <div class="hire-card">Ships real products</div>
           <div class="hire-card">Consistent growth</div>
           <div class="hire-card">Problem solver</div>
           <div class="hire-card">Self-driven</div>
         </div>
       </div>
     </div>
-    <div id="cmdBtn" class="border border-white/20 px-2 py-1 rounded text-[10px] cursor-pointer hover:border-white/50">⌘ K</div>
-    <button id="themeToggle" class="text-xs hover:text-white">🌙</button>
+    <div id="cmdBtn" style="border:1px solid var(--card-border);padding:4px 8px;border-radius:6px;font-size:10px;cursor:pointer;transition:border-color 0.2s" class="t-muted">⌘ K</div>
+    <button id="themeToggle" style="background:none;border:none;cursor:pointer;font-size:14px;padding:0">🌙</button>
   </div>
 </nav>
 
-<!-- CMD K MODAL -->
+<!-- CMD K -->
 <div id="cmdk">
   <div id="cmdkBox">
-    <input id="cmdkInput" placeholder="Search GitHub / LinkedIn / Email..." class="w-full bg-black border border-white/10 p-2 text-sm rounded outline-none focus:border-white/30"/>
-    <p class="text-xs text-gray-500 mt-2">Press Esc to close</p>
-    <div class="mt-3 flex flex-col gap-2" id="cmdkResults"></div>
+    <input id="cmdkInput" placeholder="Search GitHub / LinkedIn / Email..."/>
+    <p style="font-size:11px;margin-top:8px" class="t-subtle">Press Esc to close</p>
+    <div id="cmdkResults" style="margin-top:12px;display:flex;flex-direction:column;gap:4px"></div>
   </div>
 </div>
 
-<main class="pt-24 max-w-3xl mx-auto relative z-10 px-6 pb-16">
+<main style="padding-top:80px;max-width:720px;margin:0 auto;padding-left:24px;padding-right:24px;padding-bottom:64px">
 
-<div class="card profile-card rounded-2xl px-6 py-6 md:px-8 md:py-8">
+<div class="card rounded-2xl" style="padding:24px 28px">
 
   <!-- PROFILE -->
-  <div class="flex items-center gap-4">
-    <img src="images/dp.jpg" class="dp-avatar" alt="Harshavardhan" id="dpImg" />
-    <div class="flex-1">
-      <h1 class="text-sm font-semibold">Gurram Harshavardhan <span class="text-blue-400">✔</span></h1>
-      <p class="text-[11px] text-gray-500">Final-year CS student · Backend & Web Dev</p>
-      <p class="text-[10px] text-gray-600 mt-0.5">● open to work · Bangalore</p>
+  <div style="display:flex;align-items:center;gap:16px">
+    <img src="images/dp.jpg" class="dp-avatar" alt="Harshavardhan"/>
+    <div style="flex:1">
+      <h1 style="font-size:13px;font-weight:600" class="t-main">Gurram Harshavardhan <span style="color:#60a5fa">✔</span></h1>
+      <p style="font-size:11px;margin-top:2px" class="t-muted">Final-year CS student · Backend & Web Dev</p>
+      <p style="font-size:10px;margin-top:2px" class="t-subtle">● open to work · Bangalore</p>
     </div>
-    <div class="text-[10px] text-gray-500 text-right">
+    <div style="font-size:10px;text-align:right" class="t-subtle">
       <div>🇮🇳 BLR</div>
-      <div class="mt-1">2026</div>
+      <div style="margin-top:4px">2026</div>
     </div>
   </div>
 
   <!-- ABOUT -->
-  <div class="section-line mt-6 pt-4">
-    <h2 class="text-xs text-gray-500 mb-2">About</h2>
-    <p class="text-sm text-gray-300 leading-relaxed max-w-2xl">
+  <div class="section-line" style="margin-top:24px;padding-top:16px">
+    <h2 style="font-size:11px;margin-bottom:8px" class="t-subtle">About</h2>
+    <p style="font-size:12px;line-height:1.8" class="t-muted">
       Final-year Computer Science student with hands-on internship experience in Web Development at Sunver Coresynergy Solutions. Built and delivered a full-stack SaaS product end-to-end. Seeking opportunities to apply backend and web development skills, learn from industry professionals, and contribute to real-world engineering challenges.
     </p>
   </div>
 
   <!-- CONNECT -->
-  <div class="section-line mt-6 pt-4">
-    <h2 class="text-xs text-gray-500 mb-2">Connect</h2>
-    <div class="flex flex-wrap gap-2">
+  <div class="section-line" style="margin-top:24px;padding-top:16px">
+    <h2 style="font-size:11px;margin-bottom:10px" class="t-subtle">Connect</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
       <a href="https://github.com/notgreatbutOK" target="_blank" class="pill">GitHub</a>
       <a href="https://www.linkedin.com/in/gurram-harshavardhan2005" target="_blank" class="pill">LinkedIn</a>
       <a href="mailto:gurramharsha2005@gmail.com" class="pill">Email</a>
@@ -360,273 +255,187 @@ body.light .text-gray-700 { color: #666 !important; }
   </div>
 
   <!-- GITHUB ACTIVITY -->
-  <div class="section-line mt-6 pt-4">
-    <h2 class="text-xs text-gray-500 mb-3">GitHub Activity</h2>
-    <img src="https://ghchart.rshah.org/notgreatbutOK" class="w-full opacity-80 rounded" alt="GitHub contribution graph for notgreatbutOK showing activity over the past year"/>
+  <div class="section-line" style="margin-top:24px;padding-top:16px">
+    <h2 style="font-size:11px;margin-bottom:10px" class="t-subtle">GitHub Activity</h2>
+    <img src="https://ghchart.rshah.org/notgreatbutOK" style="width:100%;opacity:0.8;border-radius:6px" alt="GitHub activity"/>
   </div>
 
   <!-- SKILLS -->
-  <div class="section-line mt-6 pt-4">
-    <h2 class="text-xs text-gray-500 mb-3">Skills</h2>
-    <div class="flex flex-wrap gap-2">
-      <span class="pill">Python</span>
-      <span class="pill">JavaScript</span>
-      <span class="pill">SQL</span>
-      <span class="pill">Node.js</span>
-      <span class="pill">Express.js</span>
-      <span class="pill">MongoDB</span>
-      <span class="pill">HTML/CSS</span>
-      <span class="pill">Git</span>
-      <span class="pill">GitHub</span>
+  <div class="section-line" style="margin-top:24px;padding-top:16px">
+    <h2 style="font-size:11px;margin-bottom:10px" class="t-subtle">Skills</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">SQL</span>
+      <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">MongoDB</span>
+      <span class="pill">HTML/CSS</span><span class="pill">Git</span><span class="pill">GitHub</span>
     </div>
   </div>
 
   <!-- EXPERIENCE -->
-  <div class="section-line mt-6 pt-4">
-    <h2 class="text-xs text-gray-500 mb-3">Experience</h2>
-    <div class="flex items-start justify-between">
+  <div class="section-line" style="margin-top:24px;padding-top:16px">
+    <h2 style="font-size:11px;margin-bottom:12px" class="t-subtle">Experience</h2>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
       <div>
-        <p class="text-xs text-white font-medium">Sunver Coresynergy Solutions Pvt Ltd</p>
-        <p class="text-[11px] text-gray-400 mt-0.5">Web Development Intern</p>
-        <p class="text-[10px] text-gray-600 mt-1">Node.js · Express.js · MongoDB · HTML/CSS/JS</p>
-        <ul class="mt-2 text-[11px] text-gray-500 space-y-1 list-none">
+        <p style="font-size:12px;font-weight:600" class="t-main">Sunver Coresynergy Solutions Pvt Ltd</p>
+        <p style="font-size:11px;margin-top:2px" class="t-muted">Web Development Intern</p>
+        <p style="font-size:10px;margin-top:4px" class="t-subtle">Node.js · Express.js · MongoDB · HTML/CSS/JS</p>
+        <ul style="margin-top:8px;font-size:11px;list-style:none;padding:0;display:flex;flex-direction:column;gap:4px" class="t-muted">
           <li>→ Built Kirana Store SaaS app end-to-end</li>
           <li>→ REST APIs + MongoDB database design</li>
           <li>→ Responsive frontend for store management</li>
         </ul>
-        <div class="mt-3">
-          <button onclick="toggleKirana()" class="inline-block text-xs font-semibold text-blue-300 hover:text-white border border-blue-300 hover:border-white px-3 py-1.5 rounded transition case-btn">
+        <div style="margin-top:12px">
+          <button onclick="toggleKirana()" class="case-btn" style="font-size:11px;font-weight:600;color:#93c5fd;border:1px solid #93c5fd;background:none;padding:6px 12px;border-radius:6px;cursor:pointer;transition:all 0.2s">
             → View Case Study
           </button>
         </div>
       </div>
-      <div class="text-[10px] text-gray-600 text-right shrink-0 ml-4">
-        <div>Feb 2024</div>
-        <div>— Mar 2024</div>
+      <div style="font-size:10px;text-align:right;flex-shrink:0;margin-left:16px" class="t-subtle">
+        <div>Feb 2026</div><div>— Mar 2026</div>
       </div>
     </div>
   </div>
 
-  <!-- Kirana SaaS -->
-  <section class="project hidden" id="kirana">
-    <div class="container">
-      
-      <h2>Kirana SaaS</h2>
-      <p class="tagline">Digital identity for local stores — powered by WhatsApp</p>
-
-      <div class="grid">
-        
-        <div class="card">
-          <h3>🚩 Problem</h3>
-          <p>
-            Local kirana stores struggle to go online. Most owners lack technical knowledge,
-            rely on offline sales, and miss digital opportunities.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>💡 Solution</h3>
-          <p>
-            Built a simple SaaS platform that brings stores online instantly using WhatsApp —
-            no coding, no setup, no complexity.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>⚙️ Features</h3>
-          <ul>
-            <li>WhatsApp ordering system</li>
-            <li>Digital product catalog</li>
-            <li>Repeat order flow</li>
-            <li>Broadcast offers</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>🎯 Insight</h3>
-          <p>
-            The real problem wasn't automation — it was lack of online presence.
-            Simplicity > complexity.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>🚀 Value</h3>
-          <p>
-            Helps stores go online in minutes using familiar tools like WhatsApp,
-            improving convenience and saving time.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>🧠 Learnings</h3>
-          <p>
-            Online presence alone isn’t enough — discovery and visibility are the next challenges.
-          </p>
-        </div>
-
-      </div>
+  <!-- KIRANA CASE STUDY -->
+  <div class="case-hidden" id="kirana" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:4px" class="t-main">Kirana SaaS</h2>
+    <p style="font-size:12px;margin-bottom:20px" class="t-muted">Digital identity for local stores — powered by WhatsApp</p>
+    <div class="case-grid">
+      <div class="case-card"><h3>🚩 Problem</h3><p>Local kirana stores struggle to go online. Most owners lack technical knowledge and miss digital opportunities.</p></div>
+      <div class="case-card"><h3>💡 Solution</h3><p>Built a simple SaaS platform that brings stores online instantly using WhatsApp — no coding, no setup.</p></div>
+      <div class="case-card"><h3>⚙️ Features</h3><ul><li>WhatsApp ordering system</li><li>Digital product catalog</li><li>Repeat order flow</li><li>Broadcast offers</li></ul></div>
+      <div class="case-card"><h3>🎯 Insight</h3><p>The real problem wasn't automation — it was lack of online presence. Simplicity > complexity.</p></div>
+      <div class="case-card"><h3>🚀 Value</h3><p>Helps stores go online in minutes using familiar tools, improving convenience and saving time.</p></div>
+      <div class="case-card"><h3>🧠 Learnings</h3><p>Online presence alone isn't enough — discovery and visibility are the next challenges.</p></div>
     </div>
-  </section>
+  </div>
 
   <!-- PROJECTS -->
-  <div class="section-line mt-6 pt-4" id="projects">
-    <a href="https://github.com/notgreatbutOK" target="_blank" class="block group">
-      <h2 class="text-xs text-gray-500 mb-3 group-hover:text-white transition cursor-pointer">Projects ↗</h2>
-      <p class="text-xs text-gray-400 group-hover:text-gray-300 transition">View all projects on GitHub</p>
+  <div class="section-line" id="projects" style="margin-top:24px;padding-top:16px">
+    <a href="https://github.com/notgreatbutOK" target="_blank" style="display:block;text-decoration:none;transition:opacity 0.2s" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+      <h2 style="font-size:11px;margin-bottom:6px" class="t-subtle">Projects ↗</h2>
+      <p style="font-size:12px" class="t-muted">View all projects on GitHub</p>
     </a>
   </div>
 
   <!-- EDUCATION -->
-  <div class="section-line mt-6 pt-4">
-    <h2 class="text-xs text-gray-500 mb-3">Education</h2>
-    <div class="space-y-3">
-      <div class="flex justify-between">
-        <div>
-          <p class="text-xs text-white">Gopalan College of Commerce</p>
-          <p class="text-[10px] text-gray-500">B.Sc Computer Science</p>
-        </div>
-        <span class="text-[10px] text-gray-600">2023–2026</span>
+  <div class="section-line" style="margin-top:24px;padding-top:16px">
+    <h2 style="font-size:11px;margin-bottom:12px" class="t-subtle">Education</h2>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between">
+        <div><p style="font-size:12px;font-weight:500" class="t-main">Gopalan College of Commerce</p><p style="font-size:10px;margin-top:2px" class="t-muted">B.Sc Computer Science</p></div>
+        <span style="font-size:10px" class="t-subtle">2023–2026</span>
       </div>
-      <div class="flex justify-between">
-        <div>
-          <p class="text-xs text-gray-400">Gopalan Pre-University College</p>
-          <p class="text-[10px] text-gray-600">PUC · 12th</p>
-        </div>
-      </div>
-      <div class="flex justify-between">
-        <div>
-          <p class="text-xs text-gray-400">Sri Chaitanya Techno School</p>
-          <p class="text-[10px] text-gray-600">10th Standard</p>
-        </div>
-      </div>
+      <div><p style="font-size:12px" class="t-muted">Gopalan Pre-University College</p><p style="font-size:10px;margin-top:2px" class="t-subtle">PUC · 12th</p></div>
+      <div><p style="font-size:12px" class="t-muted">Sri Chaitanya Techno School</p><p style="font-size:10px;margin-top:2px" class="t-subtle">10th Standard</p></div>
     </div>
   </div>
 
 </div>
 
-<!-- DEV QUOTE -->
-  <div class="mt-8 border-t border-white/10 pt-4 text-center">
-    <p id="quote" class="text-xs text-gray-400 italic cursor-pointer hover:text-gray-300 transition">Loading quote...</p>
-  </div>
-<div class="mt-6 text-center text-[10px] text-gray-700">
+<!-- QUOTE -->
+<div style="margin-top:32px;border-top:1px solid var(--section-border);padding-top:16px;text-align:center">
+  <p id="quote" style="font-size:12px;font-style:italic;cursor:pointer;transition:opacity 0.2s" title="Click for new quote">Loading quote...</p>
+  <p style="font-size:10px;margin-top:6px" class="t-subtle">click to refresh</p>
+</div>
+
+<div style="margin-top:20px;text-align:center;font-size:10px" class="footer-text">
   © <span id="year"></span> Gurram Harshavardhan · Bangalore
 </div>
 
 </main>
 
 <script>
-// Cursor glow
-const glow = document.getElementById('glow');
-document.addEventListener('mousemove', e => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
+// Cursor glow (desktop only)
+if (window.matchMedia('(pointer:fine)').matches) {
+  const glow = document.getElementById('glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+} else {
+  document.getElementById('glow').style.display = 'none';
+}
 
-// CMD+K modal
+// Theme toggle
+const themeBtn = document.getElementById('themeToggle');
+function setTheme(light) {
+  document.body.classList.toggle('light', light);
+  themeBtn.textContent = light ? '☀️' : '🌙';
+  localStorage.setItem('theme', light ? 'light' : 'dark');
+}
+themeBtn.addEventListener('click', () => setTheme(!document.body.classList.contains('light')));
+setTheme(localStorage.getItem('theme') === 'light');
+
+// Why Hire Me dropdown — click/tap toggle
+const whyBtn = document.getElementById('whyBtn');
+const whyDropdown = document.getElementById('whyDropdown');
+whyBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  whyDropdown.classList.toggle('open');
+});
+document.addEventListener('click', () => whyDropdown.classList.remove('open'));
+
+// CMD+K
 const modal = document.getElementById('cmdk');
 const cmdLinks = [
   { label: 'GitHub', url: 'https://github.com/notgreatbutOK' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/gurram-harshavardhan2005' },
   { label: 'Email', url: 'mailto:gurramharsha2005@gmail.com' },
 ];
-
-document.getElementById('cmdBtn').onclick = () => { modal.style.display = 'flex'; renderCmdResults(''); };
+function openCmdk() { modal.style.display='flex'; renderCmdResults(''); document.getElementById('cmdkInput').focus(); }
+document.getElementById('cmdBtn').addEventListener('click', openCmdk);
 document.addEventListener('keydown', e => {
-  const isCmdK = (e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k';
-  if (isCmdK) { e.preventDefault(); modal.style.display = 'flex'; renderCmdResults(''); }
-  if (e.key === 'Escape') modal.style.display = 'none';
+  if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='k') { e.preventDefault(); openCmdk(); }
+  if (e.key==='Escape') modal.style.display='none';
 });
-modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
-
+modal.addEventListener('click', e => { if(e.target===modal) modal.style.display='none'; });
 document.getElementById('cmdkInput').addEventListener('input', e => renderCmdResults(e.target.value));
-
 function renderCmdResults(q) {
-  const results = document.getElementById('cmdkResults');
   const filtered = cmdLinks.filter(l => l.label.toLowerCase().includes(q.toLowerCase()));
-  results.innerHTML = filtered.map(l =>
-    `<a href="${l.url}" target="_blank" class="block px-3 py-2 rounded text-xs text-gray-300 hover:bg-white/10 transition">${l.label}</a>`
+  document.getElementById('cmdkResults').innerHTML = filtered.map(l =>
+    `<a href="${l.url}" target="_blank" style="display:block;padding:8px 12px;border-radius:6px;font-size:12px;text-decoration:none;transition:background 0.15s" class="t-muted" onmouseover="this.style.background='rgba(128,128,128,0.1)'" onmouseout="this.style.background=''">${l.label}</a>`
   ).join('');
 }
 
-// Why Hire Me dropdown — click toggle for mobile
-const navMore = document.querySelector('.nav-more');
-const whyDropdown = document.querySelector('.why-hire-dropdown');
-navMore.addEventListener('click', e => {
-  e.stopPropagation();
-  whyDropdown.classList.toggle('open');
-});
-document.addEventListener('click', () => {
-  whyDropdown.classList.remove('open');
-});
-
-// Theme toggle
-const themeBtn = document.getElementById('themeToggle');
-function updateThemeIcon() {
-  themeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
-}
-themeBtn.onclick = () => {
-  document.body.classList.toggle('light');
-  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-  updateThemeIcon();
-};
-
-// Load saved theme
-if (localStorage.getItem('theme') === 'light') {
-  document.body.classList.add('light');
-}
-updateThemeIcon();
-
-// Dev quote
-const fallbackQuotes = [
+// Quotes
+const quotes = [
   { quote: "First, solve the problem. Then, write the code.", author: "John Johnson" },
   { quote: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House" },
   { quote: "Make it work, make it right, make it fast.", author: "Kent Beck" },
   { quote: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
   { quote: "The best error message is the one that never shows up.", author: "Thomas Fuchs" },
   { quote: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
-  { quote: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
   { quote: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+  { quote: "It works on my machine.", author: "Every Developer Ever" },
+  { quote: "Clean code always looks like it was written by someone who cares.", author: "Robert C. Martin" },
+  { quote: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
 ];
-
-let lastApiIndex = -1;
+let lastQ = -1;
 function loadQuote() {
-  fetch('https://programming-quotesapi.vercel.app/api/random')
-    .then(r => r.json())
-    .then(d => { document.getElementById('quote').innerText = `"${d.quote}" — ${d.author}`; })
-    .catch(() => {
-      let index;
-      do { index = Math.floor(Math.random() * fallbackQuotes.length); } while (index === lastApiIndex);
-      lastApiIndex = index;
-      const q = fallbackQuotes[index];
-      document.getElementById('quote').innerText = `"${q.quote}" — ${q.author}`;
-    });
+  let i; do { i = Math.floor(Math.random()*quotes.length); } while(i===lastQ);
+  lastQ = i;
+  const el = document.getElementById('quote');
+  el.style.opacity='0';
+  setTimeout(()=>{ el.innerText=`"${quotes[i].quote}" — ${quotes[i].author}`; el.style.opacity='1'; }, 180);
 }
+document.getElementById('quote').style.transition='opacity 0.2s';
+document.getElementById('quote').addEventListener('click', loadQuote);
 loadQuote();
-setInterval(loadQuote, 30000);
-document.getElementById('quote').onclick = loadQuote;
+setInterval(loadQuote, 10000);
 
+// Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Kirana toggle
 function toggleKirana() {
-  const section = document.getElementById("kirana");
-  const btn = document.querySelector(".case-btn");
-
-  if (section.classList.contains("show")) {
-    section.classList.remove("show");
-    section.classList.add("hidden");
-    btn.innerText = "→ View Case Study";
-  } else {
-    section.classList.remove("hidden");
-    section.classList.add("show");
-    btn.innerText = "→ Hide Case Study";
-
-    setTimeout(() => {
-      section.scrollIntoView({ behavior: "smooth" });
-    }, 200);
-  }
+  const s = document.getElementById('kirana');
+  const b = document.querySelector('.case-btn');
+  const isOpen = s.classList.contains('case-show');
+  s.classList.toggle('case-show', !isOpen);
+  s.classList.toggle('case-hidden', isOpen);
+  b.innerText = isOpen ? '→ View Case Study' : '→ Hide Case Study';
+  if (!isOpen) setTimeout(()=>s.scrollIntoView({behavior:'smooth'}), 200);
 }
 </script>
-
 </body>
 </html>
