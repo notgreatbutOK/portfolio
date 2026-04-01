@@ -79,7 +79,7 @@ body { background: var(--bg); color: var(--text); }
 body.light .cursor-glow { background:radial-gradient(circle, rgba(0,0,0,0.04), transparent 60%); }
 
 /* NAV */
-nav {
+.navbar, nav {
   position: fixed; top:0; left:0; right:0; z-index:9999;
   background: var(--nav-bg);
   border-bottom: 1px solid var(--nav-border);
@@ -90,10 +90,18 @@ nav {
   padding: 12px 24px; font-size: 12px;
   color: var(--text-muted);
 }
-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-nav a:hover { color: var(--text); }
-.nav-logo { font-weight: 700; color: var(--text); font-size: 13px; }
+nav a, .nav-links a, .nav-links span { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+nav a:hover, .nav-links a:hover, .nav-links span:hover { color: var(--text); }
+.nav-left { display: flex; align-items: center; gap: 16px; }
 .nav-links { display: flex; gap: 24px; align-items: center; }
+.logo {
+  font-weight: 800;
+  color: var(--text);
+  font-size: 13px;
+  padding-right: 12px;
+  border-right: 1px solid var(--card-border);
+  margin-right: 12px;
+}
 
 /* CARD */
 .card {
@@ -185,26 +193,30 @@ a.pill { cursor: pointer; text-decoration: none; }
 <div class="cursor-glow" id="glow"></div>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">GHV</div>
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#projects">Projects</a>
-    <div style="position:relative">
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="logo">GHV</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#projects">Projects</a>
       <span id="whyBtn" style="cursor:pointer;transition:color 0.2s" class="t-muted">Why Hire Me ▾</span>
-      <div class="why-hire-dropdown" id="whyDropdown">
-        <h2 style="font-size:11px;font-weight:600;margin-bottom:12px;text-align:center" class="t-main">Why Hire Me</h2>
-        <div class="why-hire-grid">
-          <div class="hire-card">Fast learner</div>
-          <div class="hire-card">Ships real products</div>
-          <div class="hire-card">Consistent growth</div>
-          <div class="hire-card">Problem solver</div>
-          <div class="hire-card">Self-driven</div>
-        </div>
-      </div>
     </div>
+  </div>
+  <div class="nav-right" style="display:flex;gap:10px;align-items:center;">
     <div id="cmdBtn" style="border:1px solid var(--card-border);padding:4px 8px;border-radius:6px;font-size:10px;cursor:pointer;transition:border-color 0.2s" class="t-muted">⌘ K</div>
     <button id="themeToggle" style="background:none;border:none;cursor:pointer;font-size:14px;padding:0">🌙</button>
+  </div>
+  <div style="position:relative">
+    <div class="why-hire-dropdown" id="whyDropdown">
+      <h2 style="font-size:11px;font-weight:600;margin-bottom:12px;text-align:center" class="t-main">Why Hire Me</h2>
+      <div class="why-hire-grid">
+        <div class="hire-card">Fast learner</div>
+        <div class="hire-card">Ships real products</div>
+        <div class="hire-card">Consistent growth</div>
+        <div class="hire-card">Problem solver</div>
+        <div class="hire-card">Self-driven</div>
+      </div>
+    </div>
   </div>
 </nav>
 
