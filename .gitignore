@@ -1,1 +1,3 @@
 .vercel
+.ideavo/project
+*.log
